@@ -1,26 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Pantalla from './components/pantalla';
+import Boton from './components/boton'
+import {  Button,
+          MainContainer,
+          CounterContainer,
+          BotonContainer } 
+  from './containers/index';
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      contador: 0
+    }
+    this.sumar = this.sumar.bind(this)
+    this.restar = this.restar.bind(this)
+  }
+  sumar() {
+    this.setState(() => {
+      return({contador: this.state.contador + 1})
+      }
+    )
+  }
+  restar() {
+    this.setState(() => {
+      return({contador: this.state.contador - 1})
+      }
+    )
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <MainContainer>
+        <CounterContainer>
+          <Pantalla contador={this.state.contador}/>
+          <BotonContainer>
+            <Boton operacion="+" functionOperation={this.sumar}/>
+            <Boton operacion="-" functionOperation={this.restar}/>
+          </BotonContainer>
+        </CounterContainer>
+      </MainContainer>
     );
   }
 }
