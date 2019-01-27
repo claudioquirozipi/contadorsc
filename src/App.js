@@ -6,6 +6,17 @@ import {  Button,
           CounterContainer,
           BotonContainer } 
   from './containers/index';
+import firebase from 'firebase';
+
+var config = {
+  apiKey: "AIzaSyC9syVdaIGpJa80VHXyHBwAAW3IDhQ2P8Q",
+  authDomain: "contador-55ade.firebaseapp.com",
+  databaseURL: "https://contador-55ade.firebaseio.com",
+  projectId: "contador-55ade",
+  storageBucket: "contador-55ade.appspot.com",
+  messagingSenderId: "445469495005"
+};
+firebase.initializeApp(config);
 
 class App extends Component {
   constructor(props){
